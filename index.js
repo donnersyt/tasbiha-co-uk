@@ -2,6 +2,7 @@ const express = require("express");
 var nunjucks = require("nunjucks");
 const path = require("path");
 const axios = require("axios");
+const { get } = require("http");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8080;
@@ -21,15 +22,21 @@ getKitty = async () => {
   return response.data[0]
 };
 
+getUrl = async (req) => {
+  return req.protocol + '://' + req.get('host')
+}
 
 app.get("/", async (req, res) => {
+  const thisUrl = await getUrl(req);
   const kitty = await getKitty();
   res.render("index", {
+    thisUrl: thisUrl,
     kittyImageUrl: kitty.url
   })
 });
 
-app.get('*', function(req, res){
+app.get('*', async function (req, res) {
+  console.log(await getUrl(req));
   res.status(404).render("404");
 });
 
