@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tasbiha</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    div {
+        display: contents;
+    }
+    a {
+        display: contents;
+    }
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    img {
+      width: auto;
+      height: 90%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+    <div>
+        <a href="{{kittyImageUrl}}" target="_blank"><img id="kitty" src="{{kittyImageUrl}}" alt="Image"></a>
+    </div>
+    <!-- <a href="{{kittyImageUrl}}" target="_blank"><img id="kitty" src="{{kittyImageUrl}}" alt="Image"></a> -->
+  <!-- <img id="kitty" src="{{kittyImageUrl}}" alt="Image"> -->
+</body>
+<script>
+    const kitty = document.getElementById('kitty');
+    kitty.style.objectFit = 'contain';
+    if (window.innerHeight > window.innerWidth) {
+      kitty.style.width = '90%';
+      kitty.style.height = 'auto';
+    } else {
+      kitty.style.width = 'auto';
+      kitty.style.height = '90%';
+    }
+</script>
+</html>
