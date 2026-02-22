@@ -35,7 +35,7 @@ app.get("/", async (req, res) => {
   })
 });
 
-app.get('*', async function (req, res) {
+app.get(/.*/, async function (req, res) {
   console.log(await getUrl(req));
   res.status(404).render("404");
 });
